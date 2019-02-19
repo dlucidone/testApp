@@ -31,3 +31,17 @@
     transform: rotate(360deg);
   }
 }
+
+.searchComp{
+  display: flex;
+  padding: 1%
+}
+
+.ltable{
+  width:70%;
+  padding:1%
+}
+
+.tInput{
+  width:30%
+}
