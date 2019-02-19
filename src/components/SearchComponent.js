@@ -20,9 +20,10 @@ class SearchComponent extends Component {
                 return el;
             }
         })
-        if(
-            data.length ){
+        if(data.length ){
             this.setState({searching:false})
+
+            this.setState({foundResult:true})
              this.setState({data:data})
 
              } else{
@@ -33,7 +34,7 @@ class SearchComponent extends Component {
     }
     submitResult(val) {
         this.setState({searching:true})
-        setTimeout(()=> this.filterResult(),3000);
+        setTimeout(()=> this.filterResult(val),1000);
         
     }
     render() {
@@ -41,7 +42,8 @@ class SearchComponent extends Component {
             <div >
                 <SearchInputComponent submitResult={this.submitResult} />
                 {this.state.searching ? <ProgressBar now={60} /> :null}
-                {this.state.foundResult && !this.state.searching ? <ListComponent data={this.state.data} /> : <p>Sorry No Match Found</p>}
+                {this.state.foundResult && !this.state.searching ? <ListComponent data={this.state.data} /> : null}
+                {!this.state.foundResult ? <p>Sorry No Match Found</p> :null}
             </div>
         );
     }
